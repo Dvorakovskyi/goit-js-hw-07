@@ -31,11 +31,13 @@ const handleImgClick = event => {
     `);
   modalWindow.show();
 
-  document.addEventListener('keydown', event => {
+  const handleEscape = event => {
     if (event.key === 'Escape') {
       modalWindow.close();
+      document.removeEventListener('keydown', handleEscape);
     }
-  });
-};
+  }
+  document.addEventListener('keydown', handleEscape);
+}
 
-galleryEl.addEventListener('click', handleImgClick);
+  galleryEl.addEventListener('click', handleImgClick);
